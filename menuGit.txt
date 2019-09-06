@@ -1,0 +1,38 @@
+#!/bin/bash
+
+echo "A - Muestre la cantidad de archivos que contiene cada subdirectorio de un directorio ingresado."
+echo "B - Darle permiso de ejecucion a un archivo determinado."
+echo "S - Salir o finalizar."
+echo "Seleccione una opcion."
+read var
+case $var in
+	A)
+	echo "Ingrese un directorio" 
+	read dir
+	if test -d $dir
+		then
+			ls -lR $dir
+		else
+			echo "No es un directorio"
+	fi
+	echo;;
+		
+	B)
+	echo "Ingrese el archivo al que quiere darle permiso de ejecucion"
+	read arch
+	if test -f $arch
+		then
+			chmod +x $arch
+		else
+			echo "Lo que ingreso no es un archivo"
+	fi;;
+	
+
+	S)
+	echo "Fin"
+	exit 1;; 
+	
+	*)
+		echo "El parametro ingresado no es valido"
+esac
+			
